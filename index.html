@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa Ficticia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .alert {
+            background-color: yellow;
+            color: red;
+            text-align: center;
+            padding: 30px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .product {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: calc(33.33% - 20px); /* Asegúrate de que las imágenes ocupen un tercio de la fila */
+            margin: 10px; /* Mantén el margen para el espaciado */
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Asegura que el contenido esté en columna */
+            align-items: center; /* Centra horizontalmente el contenido */
+        }
+
+        .product img {
+            max-width: 100%; /* Asegúrate de que las imágenes no sobrepasen el contenedor */
+            height: 250px; /* Mantén la altura constante */
+            object-fit: cover; /* Asegura que la imagen se ajuste bien */
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .cart-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .cart-section h2 {
+            text-align: center;
+        }
+        .cart-items {
+            list-style: none;
+            padding: 0;
+        }
+        .cart-items li {
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #141414;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .communication {
+            margin: 20px 0;
+            text-align: center;
+        }
+        button {
+            background-color: #3881bd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mensaje de alerta -->
+    <div class="alert">
+        <strong>¡Aviso Importante!</strong> Este es un proyecto escolar, no se realizan ventas reales.
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Magical Look</h1>
+    </header>
+
+    <!-- Lista de productos ficticios -->
+    <section class="products">
+        <div class="product">
+            <img src="https://i.pinimg.com/736x/13/d3/0a/13d30a5014642404d339e07071b74deb.jpg" alt="Conjunto">
+            <h3>Conjunto</h3>
+            <p>Precio: $979.99</p>
+            <button onclick="agregarAlCarrito('Conjunto', 979.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/736x/ff/0c/f8/ff0cf8822e2e77972dde1e448e030835.jpg" alt="Pantalón de vestir">
+            <h3>Pantalones de vestir</h3>
+            <p>Precio: $229.99</p>
+            <button onclick="agregarAlCarrito('Pantalón de vestir', 229.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/d1/dc/27/d1dc27023997159b33bbd4de42aa3ee8.jpg" alt="Conjunto de dos piezas">
+            <h3>Conjunto de dos piezas</h3>
+            <p>Precio: $449.99</p>
+            <button onclick="agregarAlCarrito('Conjunto de dos piezas', 449.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/a2/09/0d/a2090d9d5311b75fbd8faa1d7ba3bfcf.jpg" alt="Vestido ajustado">
+            <h3>Vestido ajustado</h3>
+            <p>Precio: $139.99</p>
+            <button onclick="agregarAlCarrito('Vestido ajustado', 139.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/0b/44/20/0b4420fe502b1651f4406fbbd71d295f.jpg" alt="Vestido de Verano">
+            <h3>Vestido de Verano</h3>
+            <p>Precio: $324.99</p>
+            <button onclick="agregarAlCarrito('Vestido de Verano', 324.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/87/8e/3e/878e3e20a53aceea74bf30fc2d337ea7.jpg" alt="Zapatillas Deportivas">
+            <h3>Zapatillas Deportivas</h3>
+            <p>Precio: $959.99</p>
+            <button onclick="agregarAlCarrito('Zapatillas Deportivas', 959.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/87/8e/3e/878e3e20a53aceea74bf30fc2d337ea7.jpg" alt="Cinturón de Cuero">
+            <h3>Cinturón de Cuero</h3>
+            <p>Precio: $65.99</p>
+            <button onclick="agregarAlCarrito('Cinturón de Cuero', 65.99)">Agregar al carrito</button>
+        </div>
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/c4/04/0a/c4040a6632f069a953b5d670371c21dd.jpg" alt="Gorra Casual">
+            <h3>Gorra Casual</h3>
+            <p>Precio: $120.99</p>
+            <button onclick="agregarAlCarrito('Gorra Casual', 120.99)">Agregar al carrito</button>
+        </div>
+    </section>
+
+    <!-- Sección del carrito de compras -->
+    <section class="cart-section">
+        <h2>Carrito de Compras</h2>
+        <ul class="cart-items" id="cart-items">
+            <li class="empty-cart">Tu carrito está vacío</li>
+        </ul>
+        <div class="total" id="total">Total: $0.00</div>
+    </section>
+
+    <!-- Mecanismo de comunicación: Chat simple -->
+    <section class="communication">
+        <h2>Comunicación</h2>
+        <p>Este es un chat simulado. Deja tu mensaje:</p>
+        <textarea rows="5" cols="50" placeholder="Escribe aquí tu mensaje..."></textarea>
+        <br>
+        <button>Enviar</button>
+    </section>
+
+    <!-- Footer con créditos -->
+    <footer>
+        <p>Reyes Baez Estefany Mariana</p>
+    </footer>
+
+    <script>
+        // Lista de productos en el carrito
+        let carrito = [];
+
+        // Función para agregar un producto al carrito
+        function agregarAlCarrito(nombreProducto, precioProducto) {
+            // Añadir producto al array carrito
+            carrito.push({ nombre: nombreProducto, precio: precioProducto });
+
+            // Actualizar la interfaz del carrito
+            mostrarCarrito();
+        }
+
+        // Función para mostrar el carrito
+        function mostrarCarrito() {
+            const listaCarrito = document.getElementById('cart-items');
+            listaCarrito.innerHTML = ''; // Limpiar el contenido actual
+
+            if (carrito.length === 0) {
+                // Si el carrito está vacío
+                listaCarrito.innerHTML = '<li class="empty-cart">Tu carrito está vacío</li>';
+            } else {
+                // Recorrer los productos en el carrito y mostrarlos
+                carrito.forEach((producto) => {
+                    const item = document.createElement('li');
+                    item.textContent = `${producto.nombre} - $${producto.precio.toFixed(2)}`;
+                    listaCarrito.appendChild(item);
+                });
+            }
+
+            // Mostrar el total
+            mostrarTotal();
+        }
+
+        // Función para calcular y mostrar el total
+        function mostrarTotal() {
+            const totalDiv = document.getElementById('total');
+            const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
+            totalDiv.textContent = `Total: $${total.toFixed(2)}`;
+        }
+    </script>
+
+</body>
+</html>
